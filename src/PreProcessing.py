@@ -23,21 +23,20 @@ class PreProcessing:
         base = base.fillna(0)
 
         # get significance and number interactions
-        classe = base.turnover
+        classe = base.loc[:,'turnover']
 
         # define classe and predictors
         # forecasters = base.iloc[:, [3,4,5,6,7,8,9,11,12,13,14,15,16,17]].
         forecasters = base.loc[:,
                       ['betweenness', 'degree_in', 'degree_out', 'degree_total', 'closeness', 'eigenvector', 'coreness',
                        'mean_positive', 'mean_negative', 'received_negative', 'received_positive', 'num_interaction',
-                       'mean_interval', 'num_active_days']].values
+                       'mean_interval', 'num_active_days']]
         # forecasters = base.loc[:, ['mean_positive','mean_negative','received_negative','received_positive']].values
         # forecasters = base.loc[:, ['betweenness','degree_in','degree_out','degree_total','closeness','eigenvector','coreness','mean_positive','mean_negative','received_negative','received_positive']].values
         #classe = self.getTurnoverValues(classe)
         # scaler forecasts
         scaler = StandardScaler()
         forecasters = scaler.fit_transform(forecasters)
-
         return forecasters, classe
 
     def getTurnoverValues(self, classe):

@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Feb  6 22:02:10 2019
+Created on Thu Apr 25 01:45:14 2019
 
 @author: Dougl
 """
 
-from sklearn.tree import DecisionTreeClassifier
+
+from sklearn.ensemble import RandomForestClassifier
 
 from sklearn.model_selection import train_test_split
 
@@ -20,12 +21,12 @@ import pickle
 #from imblearn.over_sampling import RandomOverSampler
 #from imblearn.under_sampling import RandomUnderSampler
 
-class DecisionTree(LearningAlgorithm):
+class RandomForestClassifier(LearningAlgorithm):
     
     def getModel(self, train_forecasts, train_classes):
-        decisionTree = DecisionTreeClassifier()
-        decisionTree.fit(train_forecasts, train_classes)
-        return decisionTree
+        clf = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0)
+        clf.fit(train_forecasts, train_classes)
+        return clf
     
     def __init__(self, forecasts, classes, path2):
         super().__init__(forecasts, classes, path2)
