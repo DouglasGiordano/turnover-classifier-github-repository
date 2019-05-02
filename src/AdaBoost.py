@@ -23,8 +23,8 @@ import pickle
 #from imblearn.under_sampling import RandomUnderSampler
 class AdaBoost(LearningAlgorithm):
     
-    def __init__(self, forecasts, classes, path2, base_estimator, estimators=25, rateL=0.8):
-        super().__init__(forecasts, classes, path2)
+    def __init__(self,data,  forecasts, classes, path2, base_estimator, estimators=25, rateL=0.8):
+        super().__init__(data, forecasts, classes, path2)
         self.base_estimator = base_estimator
         self.estimators = estimators
         self.rateL = rateL

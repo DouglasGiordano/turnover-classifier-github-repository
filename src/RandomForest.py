@@ -14,19 +14,20 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 
 import pickle
 
-#from .PreProcessing import PreProcessing
+from src.LearningAlgorithm import LearningAlgorithm
 
+from src.PreProcessing import PreProcessing
 #oversampling
 #from imblearn.over_sampling import BorderlineSMOTE, ADASYN
 #from imblearn.over_sampling import RandomOverSampler
 #from imblearn.under_sampling import RandomUnderSampler
 
-class RandomForestClassifier(LearningAlgorithm):
-    
+class RandomForest(LearningAlgorithm):
+
+    def __init__(self,data,  forecasts, classes, path2):
+        super().__init__(data, forecasts, classes, path2)
+        
     def getModel(self, train_forecasts, train_classes):
-        clf = RandomForestClassifier(n_estimators=100, max_depth=2, random_state=0)
+        clf = RandomForestClassifier()
         clf.fit(train_forecasts, train_classes)
         return clf
-    
-    def __init__(self, forecasts, classes, path2):
-        super().__init__(forecasts, classes, path2)

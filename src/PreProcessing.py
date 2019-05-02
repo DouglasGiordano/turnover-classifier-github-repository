@@ -37,7 +37,7 @@ class PreProcessing:
         # scaler forecasts
         scaler = StandardScaler()
         forecasters = scaler.fit_transform(forecasters)
-        return forecasters, classe
+        return forecasters, classe, base
 
     def getTurnoverValues(self, classe):
         # get true or false value for turnover based in significance e number interactions

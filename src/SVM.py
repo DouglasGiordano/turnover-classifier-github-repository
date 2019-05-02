@@ -21,11 +21,11 @@ from imblearn.over_sampling import RandomOverSampler
 from imblearn.under_sampling import RandomUnderSampler
 class SVM(LearningAlgorithm):
 
-    def __init__(self, forecasts, classes, path, kernel="linear"):
+    def __init__(self,data,  forecasts, classes, path, kernel="linear"):
         super().__init__(forecasts, classes, path)
         self.kernel = kernel
 
-    def getModel(self, train_forecasts, train_classes):
+    def getModel(self,data,  train_forecasts, train_classes):
         svclassifier = SVC(kernel=self.kernel)
         svclassifier.fit(train_forecasts, train_classes)
         return svclassifier

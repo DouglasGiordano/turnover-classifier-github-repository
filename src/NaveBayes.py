@@ -24,7 +24,7 @@ from sklearn.metrics import matthews_corrcoef
 
 class NaveBayes(LearningAlgorithm):
     
-    def __init__(self, forecasts, classes, path2):
-        super().__init__(forecasts, classes, path2)
+    def __init__(self, data, forecasts, classes, path2):
+        super().__init__(data, forecasts, classes, path2)
 
     
