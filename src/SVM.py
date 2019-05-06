@@ -15,7 +15,7 @@ import pickle
 
 from .PreProcessing import PreProcessing
 
-#oversampling
+from src.LearningAlgorithm import LearningAlgorithm
 from imblearn.over_sampling import BorderlineSMOTE, ADASYN
 from imblearn.over_sampling import RandomOverSampler
 from imblearn.under_sampling import RandomUnderSampler

@@ -40,10 +40,10 @@ class StatisticModel():
         'TP': [self.tp], 
         'TN': [self.tn],
         'FP': [self.fp],
-        'FN': [self.precision],
+        'FN': [self.fn],
         'Precision':[self.precision],
         'Recall':[self.recall]}
         print(data)
         statisticdf = pd.DataFrame(data, columns = ['Acurracy', 'MCC', 'TP', 'TN', 'FP', 'FN', 'Precision', 'Recall'])
-        statisticdf.to_csv(self.path+"statistic.csv", sep='\t')
+        statisticdf.to_csv(str(self.path+"statistic.csv"), encoding='utf-8', index=False)
     

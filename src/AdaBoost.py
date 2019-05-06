@@ -13,14 +13,11 @@ from sklearn.svm import SVC
 
 from sklearn.metrics import confusion_matrix, accuracy_score
 
-import pickle
+from src.LearningAlgorithm import LearningAlgorithm
 
-#from .PreProcessing import PreProcessing
 
-#oversampling
-#from imblearn.over_sampling import BorderlineSMOTE, ADASYN
-#from imblearn.over_sampling import RandomOverSampler
-#from imblearn.under_sampling import RandomUnderSampler
+
+
 class AdaBoost(LearningAlgorithm):
     
     def __init__(self,data,  forecasts, classes, path2, base_estimator, estimators=25, rateL=0.8):

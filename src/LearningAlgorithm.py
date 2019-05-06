@@ -24,9 +24,10 @@ from numpy import array
 from sklearn.model_selection import KFold
 import os
 #oversampling
-#from imblearn.over_sampling import BorderlineSMOTE, ADASYN
-#from imblearn.over_sampling import RandomOverSampler
-#from imblearn.under_sampling import RandomUnderSampler
+from imblearn.over_sampling import RandomOverSampler
+from imblearn.under_sampling import RandomUnderSampler
+from imblearn.over_sampling import BorderlineSMOTE, ADASYN
+
 from src.StatisticModel import StatisticModel
 
 class LearningAlgorithm:
@@ -48,14 +49,20 @@ class LearningAlgorithm:
     def forecast(self, train_forecasts, train_classes, test_forecasts, test_classes):
         model = self.getModel(train_forecasts, train_classes)
         directory = self.getDirectory()
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        filename = directory+'model.sav'
+        
+        self.assure_path_exists(directory)
+        filename = str(directory+'model.sav')
         pickle.dump(model, open(filename, 'wb'))
         return model.predict(test_forecasts)
 
+    def assure_path_exists(self, path):
+        dir = os.path.dirname(path)
+        if not os.path.exists(dir):
+                os.makedirs(dir)
+                
     def reportResult(self, result_classes, test_classes):
         directory = self.getDirectory()
+        print(directory)
         statisticModel = StatisticModel(result_classes, test_classes, directory)
         statisticModel.getStatistic();
 
@@ -79,7 +86,7 @@ class LearningAlgorithm:
             
 
     def execute(self, train_forecasts, train_classes, test_forecasts, test_classes):
-        #train_forecasts, train_classes = BorderlineSMOTE().fit_resample(train_forecasts, train_classes)
+        train_forecasts, train_classes = BorderlineSMOTE().fit_resample(train_forecasts, train_classes)
         #ros = RandomOverSampler(random_state=0)
         #self.forecasts_train, self.class_train = ros.fit_resample(self.forecasts_train, self.class_train)
         #self.forecasts_train, self.class_train = ADASYN().fit_resample(self.forecasts_train, self.class_train)
