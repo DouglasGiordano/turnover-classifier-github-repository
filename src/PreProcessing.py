@@ -16,7 +16,7 @@ class PreProcessing:
         self.pathData = pathData
 
     def process(self):
-        base = pd.read_csv(self.pathData)
+        base = pd.read_csv(self.pathData,low_memory=False)
         statistics = base.describe()
         print(statistics)
         # replace nan with zero
