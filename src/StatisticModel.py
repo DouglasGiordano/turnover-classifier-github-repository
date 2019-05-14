@@ -41,8 +41,8 @@ class StatisticModel():
         'TN': [self.tn],
         'FP': [self.fp],
         'FN': [self.fn],
-        'Precision':[self.precision],
-        'Recall':[self.recall]}
+        'Precision': [self.precision],
+        'Recall': [self.recall]}
         print(data)
         statisticdf = pd.DataFrame(data, columns = ['Acurracy', 'MCC', 'TP', 'TN', 'FP', 'FN', 'Precision', 'Recall'])
         statisticdf.to_csv(str(self.path+"statistic.csv"), encoding='utf-8', index=False)

@@ -54,7 +54,7 @@ def classificar(n):
     
     #Naive Bayes
     if n == 9:
-        forecasts, classes, base = processingAll.process()
+        forecasts, classes, base = processingNoCasualAll.process()
         dT = NaiveBayes(base, forecasts, classes, "9-naive-bayes-no-casual")
         dT.kFold()    
     if n == 10:
@@ -62,18 +62,18 @@ def classificar(n):
         dT = NaiveBayes(base, forecasts, classes, "10-naive-bayese-all")
         dT.kFold() 
     if n == 11:
-        forecasts, classes, base = processingAll.process()
+        forecasts, classes, base = processingNoCasualLast.process()
         dT = NaiveBayes(base, forecasts, classes, "11-naive-bayes-no-casual-last")
         dT.kFold() 
     if n == 12:
-        forecasts, classes, base = processingAll.process()
+        forecasts, classes, base = processingAllLast.process()
         dT = NaiveBayes(base, forecasts, classes, "12-naive-bayes-all-last")
         dT.kFold() 
     #Naive Bayes
     
     #Tree Decision
     if n == 13:
-        forecasts, classes, base = processingAll.process()
+        forecasts, classes, base = processingNoCasualAll.process()
         dT = DecisionTree(base, forecasts, classes, "13-decisionTree-no-casual")
         dT.kFold() 
     if n == 14:
@@ -81,15 +81,33 @@ def classificar(n):
         dT = DecisionTree(base, forecasts, classes, "14-decisionTree-all")
         dT.kFold() 
     if n == 15:
-        forecasts, classes, base = processingAll.process()
+        forecasts, classes, base = processingNoCasualLast.process()
         dT = DecisionTree(base, forecasts, classes, "15-decisionTree-no-casual-last")
         dT.kFold()
     if n == 16:
         forecasts, classes, base = processingAll.process()
         dT = DecisionTree(base, forecasts, classes, "16-decisionTree-all-last")
         dT.kFold() 
-    #Tree Decision
+        
+    #Random Forest
+        #Tree Decision
+    if n == 17:
+        forecasts, classes, base = processingNoCasualAll.process()
+        dT = RandomForest(base, forecasts, classes, "17-randomforest-no-casual")
+        dT.kFold() 
+    if n == 18:
+        forecasts, classes, base = processingAll.process()
+        dT = RandomForest(base, forecasts, classes, "18-randomforest-all")
+        dT.kFold() 
+    if n == 19:
+        forecasts, classes, base = processingNoCasualLast.process()
+        dT = RandomForest(base, forecasts, classes, "19-randomforest-no-casual-last")
+        dT.kFold()
+    if n == 20:
+        forecasts, classes, base = processingAllLast.process()
+        dT = RandomForest(base, forecasts, classes, "20-randomforest-all-last")
+        dT.kFold() 
 #n = sys.argv[1]
 #print("classifier "+n)
 #classificar(int(n))
-classificar(1)
+classificar(2)

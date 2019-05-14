@@ -25,7 +25,7 @@ from src.PreProcessing import PreProcessing
 class RandomForest(LearningAlgorithm):
 
     def __init__(self,data,  forecasts, classes, path2):
-        super().__init__(data, forecasts, classes, path2)
+        LearningAlgorithm.__init__(self,data, forecasts, classes, path2)
         
     def getModel(self, train_forecasts, train_classes):
         clf = RandomForestClassifier()

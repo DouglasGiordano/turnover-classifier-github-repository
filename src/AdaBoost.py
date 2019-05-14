@@ -21,7 +21,7 @@ from src.LearningAlgorithm import LearningAlgorithm
 class AdaBoost(LearningAlgorithm):
     
     def __init__(self,data,  forecasts, classes, path2, base_estimator, estimators=25, rateL=0.8):
-        super().__init__(data, forecasts, classes, path2)
+        LearningAlgorithm.__init__(self,data, forecasts, classes, path2)
         self.base_estimator = base_estimator
         self.estimators = estimators
         self.rateL = rateL

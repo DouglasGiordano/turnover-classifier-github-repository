@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 """
 Created on Wed Feb  6 22:01:02 2019
 
@@ -13,8 +13,6 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 
 import pickle
 
-from .PreProcessing import PreProcessing
-
 from src.LearningAlgorithm import LearningAlgorithm
 from imblearn.over_sampling import BorderlineSMOTE, ADASYN
 from imblearn.over_sampling import RandomOverSampler
@@ -22,10 +20,10 @@ from imblearn.under_sampling import RandomUnderSampler
 class SVM(LearningAlgorithm):
 
     def __init__(self,data,  forecasts, classes, path, kernel="linear"):
-        super().__init__(forecasts, classes, path)
-        self.kernel = kernel
+       LearningAlgorithm.__init__(self,data, forecasts, classes, path)
+       self.kernel = kernel
 
-    def getModel(self,data,  train_forecasts, train_classes):
+    def getModel(self, train_forecasts, train_classes):
         svclassifier = SVC(kernel=self.kernel)
         svclassifier.fit(train_forecasts, train_classes)
         return svclassifier
