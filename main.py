@@ -107,7 +107,7 @@ def classificar(n):
         forecasts, classes, base = processingAllLast.process()
         dT = RandomForest(base, forecasts, classes, "20-randomforest-all-last")
         dT.kFold() 
-#n = sys.argv[1]
-#print("classifier "+n)
-#classificar(int(n))
-classificar(9)
+n = sys.argv[1]
+print("classifier "+n)
+classificar(int(n))
+#classificar(9)
