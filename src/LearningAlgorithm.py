@@ -44,7 +44,9 @@ class LearningAlgorithm:
         return gaussianNB
 
     def getDirectory(self):
-        return '/output/'+self.path+'/'+str(self.fold)+'/'
+        dir = os.path.dirname(__file__)
+        filename = os.path.join(dir, 'output/'+self.path+'/'+str(self.fold)+'/')
+        return filename
 
     def forecast(self, train_forecasts, train_classes, test_forecasts, test_classes):
         model = self.getModel(train_forecasts, train_classes)

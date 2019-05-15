@@ -25,6 +25,6 @@ from src.LearningAlgorithm import LearningAlgorithm
 class NaiveBayes(LearningAlgorithm):
     
     def __init__(self, data, forecasts, classes, path2):
-        super().__init__(data, forecasts, classes, path2)
+        LearningAlgorithm.__init__(self,data, forecasts, classes, path2)
 
     
